@@ -1,0 +1,18 @@
+/* roots and customs */
+:root {
+  --clr-primary: ;
+  --clr-midtone: ;
+  --clr-darktone: ;
+  --clr-contrast1: ;
+  --clr-contrast2: ;
+  --ff-primary: ;
+  --ff-accent: ;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
