@@ -11,12 +11,95 @@
     ></script>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <!-- add link to fonts here -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poiret+One&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <!-- add nav bar here -->
-    <main></main>
+    <main class="container">
+      <form class="players" id="form">
+        <h2>CHOOSE NAME AND MARK</h2>
+        <div class="each-player">
+          <label for="player1">PLAYER 1</label>
+          <input
+            class="player-input"
+            id="player1"
+            type="text"
+            name="player1"
+            placeholder="Player 1"
+          />
+          <select name="mark" id="mark1">
+            <option value="X">X</option>
+            <option value="O">O</option>
+          </select>
+        </div>
+        <div class="each-player">
+          <label for="player2">PLAYER 2</label>
+          <input
+            class="player-input"
+            id="player2"
+            type="text"
+            name="player2"
+            placeholder="Player 2"
+          />
+        </div>
+        <input type="button" class="btn" value="PLAY" id="start" />
+      </form>
+      <div id="vs"></div>
+      <div class="play-area">
+        <h1 class="title">TIC-TAC-TOE</h1>
+        <div id="gameBoard">
+          <div id="grid0" class="cell empty winningCell"></div>
+          <div id="grid1" class="cell empty"></div>
+          <div id="grid2" class="cell empty"></div>
+          <div id="grid3" class="cell empty"></div>
+          <div id="grid4" class="cell empty"></div>
+          <div id="grid5" class="cell empty"></div>
+          <div id="grid6" class="cell empty"></div>
+          <div id="grid7" class="cell empty"></div>
+          <div id="grid8" class="cell empty"></div>
+        </div>
+      </div>
+      <div class="winMessage" id="winMessage"></div>
+    </main>
+    <footer>
+      <div class="footer-contact">
+        <div class="footer-contact-title">CONTACT:</div>
+        <div class="footer-contact-links">
+          <a href="mailto:amalfimakesit@gmail.com">email</a>
+          <a href="http://www.linkedin.com/in/steve-corwin-amalfitano-79345698/"
+            >LinkedIn</a
+          >
+          <a href="https://www.facebook.com/AmalfiMakesIt/">Store</a>
+        </div>
+      </div>
+      <div class="footer-center">
+        <div class="footer-social">
+          <a href="https://www.facebook.com/AmalfiMakesIt"
+            ><i class="fab fa-facebook fa-1x"></i
+          ></a>
+
+          <a href="https://www.instagram.com/amalfi.makes.it/"
+            ><i class="fab fa-instagram fa-1x"></i
+          ></a>
+          <a href="https://github.com/PrinceCorwin"
+            ><i class="fab fa-github fa-1x"></i
+          ></a>
+          <a href="https://www.youtube.com/c/TribeOfOne"
+            ><i class="fab fa-youtube fa-1x"></i
+          ></a>
+        </div>
+        <div class="copyright">
+          <small>&copy; Copyright 2020, Steve Corwin Amalfitano</small>
+        </div>
+      </div>
+      <div class="footer-logo">
+        <a href="https://amalfimakesit.com/">
+          <img src="images/AmalfiMakesItWebDev.svg" alt="Amalfi Makes It logo"
+        /></a>
+      </div>
+    </footer>
     <script src="script.js"></script>
-    <footer></footer>
   </body>
 </html>

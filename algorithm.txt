@@ -1,0 +1,18 @@
+HTML gameboard
+    squares, play, reset buttons
+
+IEFE for event listeners
+
+gameBoard module
+    array of 9 values (start with "empty", update to x or 0 when played)
+
+playFlow object
+    whose turn
+    play function (update DOM and gameBoard module)
+    checkForGameOver function (win or tie)
+
+player factory
+    name
+    player 1 or 2 (x or O)
+    choose avatar?
+

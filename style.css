@@ -5,8 +5,8 @@
   --clr-darktone: ;
   --clr-contrast1: ;
   --clr-contrast2: ;
-  --ff-primary: ;
-  --ff-accent: ;
+  --ff-primary: "Poiret One", cursive;
+  --ff-accent: "Montserrat", sans-serif;
 }
 
 *,
@@ -15,4 +15,287 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+body {
+  background-image: url(images/boardGame.jpg);
+  background-size: cover;
+}
+main {
+  min-height: 100vh;
+}
+.title {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  width: 100%;
+  padding: 2rem;
+  font-family: var(--ff-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.players {
+  font-family: var(--ff-accent);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  margin: 2rem;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+.each-player {
+  color: rgb(250, 163, 132);
+  display: flex;
+  align-items: center;
+}
+label {
+  padding: 0 1rem;
+}
+input,
+select {
+  background: rgb(216, 216, 216);
+  padding: 0.2rem 0.5rem;
+  border-radius: 16px;
+}
+#mark1 {
+  margin-left: 1rem;
+}
+.btn {
+  cursor: pointer;
+  height: 32px;
+  border-radius: 16px;
+  letter-spacing: 2px;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(144, 252, 144),
+    rgb(72, 146, 72)
+  );
+}
+.btn:hover {
+  background-image: linear-gradient(
+    to bottom left,
+    rgb(144, 252, 144),
+    rgb(72, 146, 72)
+  );
+}
+.play-area {
+  /* background: black; */
+
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  /* margin: 0 auto; */
+  /* background-color: blue; */
+}
+
+#gameBoard {
+  /* background: black; */
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-gap: 5px;
+  /* width: 310px;
+  margin: 0 auto; */
+}
+.cell {
+  background: rgba(66, 146, 13, 0.7);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  /* border: 2px solid black; */
+}
+
+.X .empty::after {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  content: "";
+  background: red;
+  border-radius: 5px;
+  width: 0;
+  height: 0;
+  transform: rotate(45deg);
+}
+.X .empty:hover::after {
+  width: 12%;
+  height: 90%;
+}
+.X .empty::before {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
+  position: absolute;
+  content: "";
+  background: red;
+  border-radius: 5px;
+
+  width: 0%;
+  height: 0%;
+  transform: rotate(-45deg);
+}
+.X .empty:hover::before {
+  width: 12%;
+  height: 90%;
+}
+.O .empty::after {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
+  position: absolute;
+  content: "";
+  background: rgb(197, 197, 197);
+
+  width: 0%;
+  height: 0%;
+  border-radius: 50%;
+}
+.O .empty::before {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
+  position: absolute;
+  content: "";
+  background: blue;
+
+  width: 0%;
+  height: 0%;
+  border-radius: 50%;
+}
+.O .empty:hover::after {
+  width: 60%;
+  height: 60%;
+}
+.O .empty:hover::before {
+  width: 80%;
+  height: 80%;
+}
+.x::after {
+  position: absolute;
+  content: "";
+  background: red;
+  border-radius: 5px;
+
+  width: 12%;
+  height: 90%;
+  transform: rotate(45deg);
+}
+.x::before {
+  position: absolute;
+  content: "";
+  background: red;
+  border-radius: 5px;
+
+  width: 12%;
+  height: 90%;
+  transform: rotate(-45deg);
+}
+.o::after {
+  position: absolute;
+  content: "";
+  background: rgb(197, 197, 197);
+
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+}
+.o::before {
+  position: absolute;
+  content: "";
+  background: blue;
+
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+}
+.x,
+.o {
+  cursor: not-allowed;
+  /* background: purple; */
+}
+.winningCell {
+  background-color: coral;
+  box-shadow: 0 0 15px white;
+}
+.winMessage {
+  transition: all 0.5s ease-in-out;
+  /* opacity: 0; */
+  margin: 0 auto;
+  font-family: var(--ff-primary);
+  font-size: 3rem;
+  position: absolute;
+  background-color: black;
+  color: white;
+  height: 100vh;
+  display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  width: 0;
+  /* z-index: -4; */
+  top: 0;
+  /* left: 0; */
+}
+/* footer start */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: #dcdcdc;
+  background-color: black;
+}
+footer > div {
+  padding: 1rem;
+}
+.footer-contact {
+  font-family: var(--ff-accent);
+  color: #dcdcdc;
+}
+.footer-contact-links {
+  display: flex;
+  flex-direction: column;
+}
+footer a,
+footer .fab,
+footer .fas,
+footer img {
+  /* text-decoration: none; */
+  color: lightblue;
+  transition: all 0.2s ease-in-out;
+}
+footer a:hover,
+footer .fab:hover,
+footer .fas:hover,
+footer img:hover {
+  transform: scale(1.1);
+  color: yellow;
+}
+.footer-logo {
+  width: 200px;
+}
+.footer-social {
+  padding: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+.copyright {
+  padding: 0.5rem 0;
+}
+/* footer end */
+@media screen and (max-width: 600px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-contact {
+    text-align: center;
+  }
 }
