@@ -50,7 +50,7 @@
       <div class="play-area">
         <h1 class="title">TIC-TAC-TOE</h1>
         <div id="gameBoard">
-          <div id="grid0" class="cell empty winningCell"></div>
+          <div id="grid0" class="cell empty"></div>
           <div id="grid1" class="cell empty"></div>
           <div id="grid2" class="cell empty"></div>
           <div id="grid3" class="cell empty"></div>
@@ -61,7 +61,15 @@
           <div id="grid8" class="cell empty"></div>
         </div>
       </div>
-      <div class="winMessage" id="winMessage"></div>
+      <!-- <div class="winScreen"> -->
+      <div class="winMessage" id="winMessage">
+        <div></div>
+        <div class="winButtons">
+          <input type="button" class="btn" value="PLAY AGAIN" id="replay" />
+          <input type="button" class="btn" value="RESET" id="reset" />
+        </div>
+        <!-- </div> -->
+      </div>
     </main>
     <footer>
       <div class="footer-contact">

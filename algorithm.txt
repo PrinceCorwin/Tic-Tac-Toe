@@ -1,18 +1,21 @@
-HTML gameboard
-    squares, play, reset buttons
-
-IEFE for event listeners
-
-gameBoard module
-    array of 9 values (start with "empty", update to x or 0 when played)
-
-playFlow object
-    whose turn
-    play function (update DOM and gameBoard module)
-    checkForGameOver function (win or tie)
-
-player factory
+Gameboard module: 
+    hide gameBoard (so players cant click);
+    eventListeners: 
+        startbutton: player(player1, player2);
+            player1Turn = true;
+            hide form, show player1 vs player2 screen;
+            show gameboard;
+            game(players);
+        play again:  gameArray = [], renderArray();
+        reset: gameArray = [], renderArray(), hide gameboard;
+    gameArray
+    renderArray: render gameArray to DOM
+        game(gameArray)
+    return renderArray, gameArray
+player(player1, player2) factory: 
     name
-    player 1 or 2 (x or O)
-    choose avatar?
-
+    mark
+    AI?
+game(players):
+    eventListeners for cells: add x or o to Gameboard.gameArray (based on player1.turn === true), Gameboard.renderArray;
+    checkGameOver: if not, return... if so, show win screen with reset and play again buttons

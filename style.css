@@ -145,7 +145,7 @@ select {
   width: 12%;
   height: 90%;
 }
-.O .empty::after {
+/* .O .empty::after {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 
@@ -156,24 +156,28 @@ select {
   width: 0%;
   height: 0%;
   border-radius: 50%;
-}
+} */
 .O .empty::before {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 
   position: absolute;
   content: "";
-  background: blue;
+  /* background: blue; */
 
   width: 0%;
   height: 0%;
+  border: solid 0px blue;
+
   border-radius: 50%;
 }
-.O .empty:hover::after {
+/* .O .empty:hover::after {
   width: 60%;
   height: 60%;
-}
+} */
 .O .empty:hover::before {
+  border: solid 10px blue;
+
   width: 80%;
   height: 80%;
 }
@@ -197,7 +201,7 @@ select {
   height: 90%;
   transform: rotate(-45deg);
 }
-.o::after {
+/* .o::after {
   position: absolute;
   content: "";
   background: rgb(197, 197, 197);
@@ -205,14 +209,15 @@ select {
   width: 60%;
   height: 60%;
   border-radius: 50%;
-}
+} */
 .o::before {
   position: absolute;
   content: "";
-  background: blue;
+  /* background: blue; */
 
   width: 80%;
   height: 80%;
+  border: solid 10px blue;
   border-radius: 50%;
 }
 .x,
@@ -235,14 +240,22 @@ select {
   color: white;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   white-space: nowrap;
   overflow: hidden;
   justify-content: center;
   align-items: center;
+  /* width: 100%; */
   width: 0;
   /* z-index: -4; */
   top: 0;
   /* left: 0; */
+}
+.winButtons {
+  display: flex;
+  padding: 20px;
+  width: 300px;
+  justify-content: space-around;
 }
 /* footer start */
 footer {
