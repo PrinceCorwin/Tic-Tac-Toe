@@ -48,6 +48,21 @@ main {
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem 2rem;
+  width: 420px;
+}
+#vs {
+  font-family: var(--ff-accent);
+  font-size: 1.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  margin: 2rem;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  width: 420px;
+  display: none;
 }
 .each-player {
   color: rgb(250, 163, 132);
@@ -110,6 +125,7 @@ select {
   justify-content: center;
   align-items: center;
   height: 100px;
+  transition: all 0.5s ease-in-out;
   /* border: 2px solid black; */
 }
 
@@ -226,6 +242,7 @@ select {
   /* background: purple; */
 }
 .winningCell {
+  transform: scale(1.1);
   background-color: coral;
   box-shadow: 0 0 15px white;
 }
