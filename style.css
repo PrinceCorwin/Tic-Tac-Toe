@@ -69,6 +69,9 @@ main {
   display: flex;
   align-items: center;
 }
+.player-input {
+  width: 150px;
+}
 label {
   padding: 0 1rem;
 }
@@ -78,8 +81,13 @@ select {
   padding: 0.2rem 0.5rem;
   border-radius: 16px;
 }
-#mark1 {
+#mark1,
+#hu-comp2 {
   margin-left: 1rem;
+}
+#hu-comp2 {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.3rem;
 }
 .btn {
   cursor: pointer;
