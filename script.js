@@ -97,17 +97,31 @@ const game = (player1, player2) => {
       this.classList.remove("empty");
       this.classList.add(currentPlayer.getMark().toLowerCase());
       if (checkGameOver(currentPlayer) === false) {
-        swapTurns();
+        swapTurns(cellArray);
       }
     }
     // swap turns
-    function swapTurns() {
-      Gameboard.player1Turn = !Gameboard.player1Turn;
-      if (Gameboard.player1Turn === false && player2.getAI() === true) {
-        aiPlay();
+    function swapTurns(cellArray) {
+      if (player2.getAI() === true) {
         currentPlayer = player2;
-        swapTurns();
+        let aiIndex = aiPlay();
+        Gameboard.gameArray[aiIndex] = currentPlayer.getMark();
+        console.log(Gameboard.gameArray);
+        let aiPlayedCell = document.getElementById(cellArray[aiIndex]);
+        console.log(aiPlayedCell);
+        aiPlayedCell.classList.remove("empty");
+        aiPlayedCell.classList.add(currentPlayer.getMark().toLowerCase());
+        if (checkGameOver(currentPlayer) === false) {
+          return;
+        }
       }
+
+      Gameboard.player1Turn = !Gameboard.player1Turn;
+      // if (Gameboard.player1Turn === false && player2.getAI() === true) {
+      //   aiPlay();
+      //   currentPlayer = player2;
+      //   swapTurns();
+      // }
       if (currentPlayer === player1) {
         boardClass.className = player2.getMark();
         currentPlayer = player2;
@@ -125,9 +139,10 @@ const game = (player1, player2) => {
         // finding the ultimate play on the game that favors the computer
         let bestSpot = minimax(Gameboard.gameArray, aiPlayer);
         console.log(bestSpot);
-        //loging the results
+        //logging the results
         console.log("index: " + bestSpot.index);
         console.log("function calls: " + fc);
+        return bestSpot.index;
 
         // the main minimax function
         function minimax(newBoard, player) {
