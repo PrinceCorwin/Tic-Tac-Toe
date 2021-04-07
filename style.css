@@ -119,12 +119,9 @@ select {
 }
 
 #gameBoard {
-  /* background: black; */
   display: grid;
   grid-template-columns: repeat(3, 100px);
   grid-gap: 5px;
-  /* width: 310px;
-  margin: 0 auto; */
 }
 .cell {
   background: rgba(66, 146, 13, 0.7);
@@ -134,7 +131,6 @@ select {
   align-items: center;
   height: 100px;
   transition: all 0.5s ease-in-out;
-  /* border: 2px solid black; */
 }
 
 .X .empty::after {
@@ -209,19 +205,9 @@ select {
   height: 90%;
   transform: rotate(-45deg);
 }
-/* .o::after {
-  position: absolute;
-  content: "";
-  background: rgb(197, 197, 197);
-
-  width: 60%;
-  height: 60%;
-  border-radius: 50%;
-} */
 .o::before {
   position: absolute;
   content: "";
-  /* background: blue; */
 
   width: 80%;
   height: 80%;
@@ -231,7 +217,6 @@ select {
 .x,
 .o {
   cursor: not-allowed;
-  /* background: purple; */
 }
 .winningCell {
   transform: scale(1.1);
@@ -240,7 +225,6 @@ select {
 }
 .winMessage {
   transition: all 0.5s ease-in-out;
-  /* opacity: 0; */
   margin: 0 auto;
   font-family: var(--ff-primary);
   font-size: 3rem;
@@ -254,11 +238,8 @@ select {
   overflow: hidden;
   justify-content: center;
   align-items: center;
-  /* width: 100%; */
   width: 0;
-  /* z-index: -4; */
   top: 0;
-  /* left: 0; */
 }
 .winButtons {
   display: flex;
@@ -289,7 +270,6 @@ footer a,
 footer .fab,
 footer .fas,
 footer img {
-  /* text-decoration: none; */
   color: lightblue;
   transition: all 0.2s ease-in-out;
 }

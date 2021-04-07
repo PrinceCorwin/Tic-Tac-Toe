@@ -83,16 +83,15 @@ const game = (player1, player2) => {
     } else {
       currentPlayer = player2;
     }
-    console.log(currentPlayer.getMark());
+    // console.log(currentPlayer.getMark());
     // update gameArray
     let playedCell = [cellArray.indexOf(this.id)];
-    console.log("playedCell " + Gameboard.gameArray[playedCell]);
+    // console.log("playedCell " + Gameboard.gameArray[playedCell]);
     if (
       Gameboard.gameArray[playedCell] !== "X" &&
       Gameboard.gameArray[playedCell] !== "O"
     ) {
       Gameboard.gameArray[playedCell] = currentPlayer.getMark();
-      console.log("here");
       //   update DOM
       this.classList.remove("empty");
       this.classList.add(currentPlayer.getMark().toLowerCase());
@@ -102,26 +101,22 @@ const game = (player1, player2) => {
     }
     // swap turns
     function swapTurns(cellArray) {
+      // if AI is playing, get AI play and don't swap
       if (player2.getAI() === true) {
         currentPlayer = player2;
         let aiIndex = aiPlay();
         Gameboard.gameArray[aiIndex] = currentPlayer.getMark();
-        console.log(Gameboard.gameArray);
+        // console.log(Gameboard.gameArray);
         let aiPlayedCell = document.getElementById(cellArray[aiIndex]);
-        console.log(aiPlayedCell);
+        // console.log(aiPlayedCell);
         aiPlayedCell.classList.remove("empty");
         aiPlayedCell.classList.add(currentPlayer.getMark().toLowerCase());
         if (checkGameOver(currentPlayer) === false) {
           return;
         }
       }
-
+      // swap turns if no AI playing
       Gameboard.player1Turn = !Gameboard.player1Turn;
-      // if (Gameboard.player1Turn === false && player2.getAI() === true) {
-      //   aiPlay();
-      //   currentPlayer = player2;
-      //   swapTurns();
-      // }
       if (currentPlayer === player1) {
         boardClass.className = player2.getMark();
         currentPlayer = player2;
@@ -129,30 +124,29 @@ const game = (player1, player2) => {
         boardClass.className = player1.getMark();
         currentPlayer = player1;
       }
+      // get AI played cell (miniMax algorithm)
       function aiPlay() {
         let huPlayer = player1.getMark();
         let aiPlayer = player2.getMark();
-
-        let fc = 0;
-        // let origBoard = ["X", 1, 2, 3, 4, 5, 6, 7, 8];
-
-        // finding the ultimate play on the game that favors the computer
+        // keep track of function calls
+        // let fc = 0;
+        // finding best play option for AI
         let bestSpot = minimax(Gameboard.gameArray, aiPlayer);
         console.log(bestSpot);
-        //logging the results
-        console.log("index: " + bestSpot.index);
-        console.log("function calls: " + fc);
+        // //logging the results
+        // console.log("index: " + bestSpot.index);
+        // console.log("function calls: " + fc);
         return bestSpot.index;
 
-        // the main minimax function
+        // minimax algorithm
         function minimax(newBoard, player) {
-          //add one to function calls
-          fc++;
+          // //keep track of function calls
+          // fc++;
 
-          //available spots
-          let availSpots = emptyIndexies(newBoard);
+          //open cells
+          let availSpots = emptyIndexes(newBoard);
 
-          // checks for the terminal states such as win, lose, and tie and returning a value accordingly
+          // check for game over (tie,win)
           if (winning(newBoard, huPlayer)) {
             return { score: -10 };
           } else if (winning(newBoard, aiPlayer)) {
@@ -161,7 +155,7 @@ const game = (player1, player2) => {
             return { score: 0 };
           }
 
-          // an array to collect all the objects
+          // collect possible moves
           let moves = [];
 
           // loop through available spots
@@ -173,7 +167,7 @@ const game = (player1, player2) => {
             // set the empty spot to the current player
             newBoard[availSpots[i]] = player;
 
-            //if collect the score resulted from calling minimax on the opponent of the current player
+            //if collected score resulted from calling minimax on the opponent of the opposite
             if (player == aiPlayer) {
               let result = minimax(newBoard, huPlayer);
               move.score = result.score;
@@ -189,7 +183,7 @@ const game = (player1, player2) => {
             moves.push(move);
           }
 
-          // if it is the computer's turn loop over the moves and choose the move with the highest score
+          // if AI turn, loop over the moves and choose the move with the highest score
           let bestMove;
           if (player === aiPlayer) {
             let bestScore = -10000;
@@ -215,11 +209,11 @@ const game = (player1, player2) => {
         }
 
         // returns the available spots on the board
-        function emptyIndexies(board) {
+        function emptyIndexes(board) {
           return board.filter((s) => s != "O" && s != "X");
         }
 
-        // winning combinations using the board indexies for instace the first win could be 3 xes in a row
+        // winning combinations using the board indexes
         function winning(board, player) {
           if (
             (board[0] == player && board[1] == player && board[2] == player) ||
@@ -264,7 +258,7 @@ const game = (player1, player2) => {
         })
       ) {
         //   highlight winning cells
-        console.log("win");
+        // console.log("win");
         let counter = 0;
         let i = setInterval(function () {
           document
@@ -274,7 +268,7 @@ const game = (player1, player2) => {
           counter++;
           if (counter === 3) {
             clearInterval(i);
-            console.log("cleared");
+            // console.log("cleared");
           }
         }, 150);
         winMessage = currentPlayer.getName() + " WINS!";
@@ -321,13 +315,14 @@ const game = (player1, player2) => {
         reset.addEventListener("click", function () {
           Gameboard.player1Turn = true;
           document.getElementById("form").reset();
-          console.log("reset");
+          // console.log("reset");
           updateDisplay("flex");
           winMessageDiv.style.width = "0";
         });
         const replay = document.getElementById("replay");
         replay.addEventListener("click", function () {
-          console.log("replay");
+          // console.log("replay");
+          // console.log(player2.getAI());
           Gameboard.player1Turn = true;
           //   add cell event listeners back
           const cells = document.querySelectorAll(".cell");
