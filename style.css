@@ -32,6 +32,17 @@ body {
   top: 0;
   right: 0;
 }
+#home {
+  font-family: var(--ff-accent);
+  color: rgb(144, 252, 144);
+  padding: 0 5px;
+  align-self: flex-end;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+#home:hover {
+  color: rgb(72, 146, 72);
+}
 /* fab is FA icon class */
 .fab {
   color: rgb(144, 252, 144);
